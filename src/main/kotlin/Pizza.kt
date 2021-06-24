@@ -2,11 +2,6 @@ class Pizza(val pizzaType: PizzaSize, val pizzacrust: PizzaCurst , val pizzaTopp
 
     private var Rate: Int = 0
 
-
-
-
-
-
     fun setRate() {
         Rate = pizzaType.rate + pizzacrust.rate
         if (cheese)

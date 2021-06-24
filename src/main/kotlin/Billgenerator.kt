@@ -4,11 +4,11 @@ class Billgenerator {
     val sc = Scanner(System.`in`)
 
 
-    fun checkOffers(cust: Customer) {
+    fun checkOffers(orders: Orders) {
 
         var mediumCount: Int = 0
-        for (piz in cust.getOrder()) {
-            cust.totalBill += piz.getRate()
+        for (piz in orders.getOrder()) {
+            orders.totalBill += piz.getRate()
             if (piz.getPizzaSize() == PizzaSize.MEDIUM)
                 mediumCount++
         }
@@ -23,18 +23,18 @@ class Billgenerator {
             code = sc.next()
 
             if (code.equals("ZOHO")) {
-                if (cust.totalBill * 0.10 >= 30) {
-                    cust.finalPrice = cust.totalBill - 30
+                if (orders.totalBill * 0.10 >= 30) {
+                    orders.finalPrice = orders.totalBill - 30
                 } else {
-                    cust.finalPrice = cust.totalBill - cust.totalBill * 0.10
+                    orders.finalPrice = orders.totalBill - orders.totalBill * 0.10
                 }
                 break
             } else if (code.equals("JUMBO")) {
-                if (cust.totalBill >= 400) {
-                    if (cust.totalBill * 0.20 >= 100) {
-                        cust.finalPrice = cust.totalBill - 100
+                if (orders.totalBill >= 400) {
+                    if (orders.totalBill * 0.20 >= 100) {
+                        orders.finalPrice = orders.totalBill - 100
                     } else {
-                        cust.finalPrice = cust.totalBill - cust.totalBill * 0.20
+                        orders.finalPrice = orders.totalBill - orders.totalBill * 0.20
                     }
                     break
                 } else {
@@ -44,7 +44,7 @@ class Billgenerator {
 
             } else if (code.equals("MEDIUM")) {
                 if (mediumCount >= 2) {
-                    cust.finalPrice = cust.totalBill - (mediumCount / 2) * 40
+                    orders.finalPrice = orders.totalBill - (mediumCount / 2) * 40
                 } else {
                     println("Sorry this offer is not applicable for you, Please choose other Offer")
                     continue
@@ -55,15 +55,15 @@ class Billgenerator {
                 continue
             }
         }
-        cust.finalPrice = cust.finalPrice + cust.finalPrice * 0.12
+        orders.finalPrice = orders.finalPrice + orders.finalPrice * 0.12
     }
 
-    fun printBill(cust: Customer) {
+    fun printBill(cust: Customer, orders: Orders) {
         println(cust.getName() + "\n" + cust.getNumber())
-        for (piz in cust.getOrder()) {
+        for (piz in orders.getOrder()) {
             print(piz.getPizzaSize().name + "  " + piz.getPizzaCrust() + "  " + piz.getPizzaToppings() + "  Cheese:" + piz.getcheese())
             println("\n")
         }
-        println("Total amount:" + cust.finalPrice)
+        println("Total amount:" + orders.finalPrice)
     }
 }

@@ -1,12 +1,9 @@
 class Customer {
     private var customerName: String = ""
     private var customerNumber: Long = 0
-    private var allOrder = mutableListOf<Pizza>()
-    var totalBill: Double = 0.0
-    var finalPrice: Double = 0.0
+    private var allOrder = mutableListOf<Orders>()
 
 
-    val order = NewOrder()
 
     fun setName(name: String) {
         this.customerName = name
@@ -16,9 +13,9 @@ class Customer {
         this.customerNumber = num
     }
 
-    fun setOrder() {
-        val piz: Pizza = order.createNewPizza()
-        allOrder.add(piz)
+    fun setOrder(orders: Orders) {
+
+        allOrder.add(orders)
     }
 
     fun getName(): String {
@@ -29,13 +26,9 @@ class Customer {
         return customerNumber
     }
 
-    fun getOrder(): List<Pizza> {
+    fun getOrder(): List<Orders> {
         return allOrder
     }
 
-
-    fun viewPreviousOrders(){
-
-    }
 
 }
