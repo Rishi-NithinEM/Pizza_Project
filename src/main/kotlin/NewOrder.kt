@@ -2,11 +2,11 @@ import java.util.*;
 
 class NewOrder() {
 
-    val sc= Scanner(System.`in`)
-    val bill= Billgenerator()
+    val sc = Scanner(System.`in`)
+    val bill = Billgenerator()
 
 
-    fun createNewCustomer() : Customer{
+    fun createNewCustomer(): Customer {
         val cust = Customer()
 
         println("Enter Customer name :")
@@ -18,9 +18,9 @@ class NewOrder() {
         println("Adding a new Pizza")
         cust.setOrder()
 
-        while(true){
+        while (true) {
             println("1.Wanna a add Another Pizza \nor \n2.Check Out")
-            if(sc.nextInt()== 1) {
+            if (sc.nextInt() == 1) {
                 cust.setOrder()
                 continue
             }
@@ -34,41 +34,40 @@ class NewOrder() {
     }
 
 
-    fun createNewPizza() : Pizza{
+    fun createNewPizza(): Pizza {
 
         val pizza = Pizza()
 
 
         println("Choose a Pizza Size")
-        for(sz in PizzaSize.values()){
+        for (sz in PizzaSize.values()) {
             println(sz)
         }
-        pizza.setpizzaType(PizzaSize.values()[sc.nextInt()-1])
+        pizza.setpizzaType(PizzaSize.values()[sc.nextInt() - 1])
 
         println("Now choose which type of Crust")
-        for(sz in PizzaCurst.values()){
+        for (sz in PizzaCurst.values()) {
             println(sz)
         }
-        pizza.setpizzaCrust(PizzaCurst.values()[sc.nextInt()-1])
+        pizza.setpizzaCrust(PizzaCurst.values()[sc.nextInt() - 1])
 
         println("Now Add Toppings")
-        li@while(true){
-            for(sz in Topping.values()){
+        li@ while (true) {
+            for (sz in Topping.values()) {
                 println(sz)
             }
-            pizza.setpizzaTopping(Topping.values()[sc.nextInt()-1])
+            pizza.setpizzaTopping(Topping.values()[sc.nextInt() - 1])
             println("Wanna add more Topping? (Y/N)")
-            var ch : Char = sc.next().single()
-            if(ch=='y' || ch=='Y'){
+            var ch: Char = sc.next().single()
+            if (ch == 'y' || ch == 'Y') {
                 continue@li
-            }
-            else
+            } else
                 break
         }
 
         println("Do you wanna add Cheese? (Y/N)")
-        var ch : Char = sc.next().single()
-        if(ch=='y' || ch=='Y'){
+        var ch: Char = sc.next().single()
+        if (ch == 'y' || ch == 'Y') {
             pizza.setCheese(true)
         }
 
