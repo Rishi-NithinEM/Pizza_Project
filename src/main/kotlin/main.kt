@@ -27,15 +27,15 @@ fun main() {
 
     val sc = Scanner(System.`in`)
     var Database = mutableListOf<Customer>()
+    var option:Int
     while (true) {
-        println("Hello Welcome To Pizza Shop \n1.Add a New Customer \n2.View Previous Orders")
-        if (sc.nextInt() == 1) {
+        println("\n\nHello Welcome To Pizza Shop \n1.Take a Order \n2.View Previous Orders\n3.Exit")
+        option=sc.nextInt()
+        if (option == 1) {
             Database.add(newOrder.createNewCustomer())
             continue
-        } else {
-            for (cust in Database) {
-                println(cust.getName() + " " + cust.finalPrice)
-            }
+        } else if(option == 2){
+
         }
     }
 }

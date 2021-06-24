@@ -2,10 +2,9 @@ class Customer {
     private var customerName: String = ""
     private var customerNumber: Long = 0
     private var allOrder = mutableListOf<Pizza>()
-    var totalBill: Double = 0.1
-    var finalPrice: Double = 0.1
-    var mediumCount: Int = 0
-    var offernum: Int = 0
+    var totalBill: Double = 0.0
+    var finalPrice: Double = 0.0
+
 
     val order = NewOrder()
 
@@ -19,17 +18,7 @@ class Customer {
 
     fun setOrder() {
         val piz: Pizza = order.createNewPizza()
-        if (piz.getPizzaSize() == PizzaSize.MEDIUM) {
-            mediumCount++
-        }
         allOrder.add(piz)
-    }
-
-    fun setBill() {
-        for (piz in allOrder) {
-            totalBill += piz.getRate()
-        }
-
     }
 
     fun getName(): String {
@@ -42,6 +31,11 @@ class Customer {
 
     fun getOrder(): List<Pizza> {
         return allOrder
+    }
+
+
+    fun viewPreviousOrders(){
+
     }
 
 }

@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.*
 
 class NewOrder() {
 
@@ -26,7 +26,7 @@ class NewOrder() {
             }
             break
         }
-        cust.setBill()
+        //cust.setBill()
         bill.checkOffers(cust)
         bill.printBill(cust)
 
@@ -36,27 +36,29 @@ class NewOrder() {
 
     fun createNewPizza(): Pizza {
 
-        val pizza = Pizza()
-
+        val pizzaType: PizzaSize
+        val pizzaCrust: PizzaCurst
+        val pizzaTopping = mutableListOf<Topping>()
+        var cheese: Boolean = false
 
         println("Choose a Pizza Size")
         for (sz in PizzaSize.values()) {
             println(sz)
         }
-        pizza.setpizzaType(PizzaSize.values()[sc.nextInt() - 1])
+        pizzaType = PizzaSize.values()[sc.nextInt() - 1]
 
         println("Now choose which type of Crust")
         for (sz in PizzaCurst.values()) {
             println(sz)
         }
-        pizza.setpizzaCrust(PizzaCurst.values()[sc.nextInt() - 1])
+        pizzaCrust=PizzaCurst.values()[sc.nextInt() - 1]
 
         println("Now Add Toppings")
         li@ while (true) {
             for (sz in Topping.values()) {
                 println(sz)
             }
-            pizza.setpizzaTopping(Topping.values()[sc.nextInt() - 1])
+            pizzaTopping.add(Topping.values()[sc.nextInt() - 1])
             println("Wanna add more Topping? (Y/N)")
             var ch: Char = sc.next().single()
             if (ch == 'y' || ch == 'Y') {
@@ -68,10 +70,12 @@ class NewOrder() {
         println("Do you wanna add Cheese? (Y/N)")
         var ch: Char = sc.next().single()
         if (ch == 'y' || ch == 'Y') {
-            pizza.setCheese(true)
+            cheese = true
         }
+        val pizza = Pizza(pizzaType,pizzaCrust,pizzaTopping,cheese)
 
         pizza.setRate()
+
         return pizza
 
     }
